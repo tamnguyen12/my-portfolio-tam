@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio Kỹ thuật số</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=sync-notice-6" />
   </head>
   <body>
     <header class="site-header" aria-label="Điều hướng chính">
@@ -19,6 +19,18 @@
       </nav>
     </header>
     <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+    <aside class="sync-notice" role="status" aria-live="polite">
+      <span class="sync-notice-icon" aria-hidden="true">!</span>
+      <p>Thầy cô vui lòng reload lại trang 1 lần để trang có thể đồng bộ, xuất hiện ở trạng thái tốt nhất ạ</p>
+      <button
+        class="sync-notice-close"
+        type="button"
+        aria-label="Đóng thông báo"
+        onclick="this.closest('.sync-notice').style.display = 'none'"
+      >
+        ×
+      </button>
+    </aside>
 
     <main>
       <section class="hero" id="home">
@@ -344,6 +356,6 @@
 
     <button class="back-to-top" type="button" aria-label="Lên đầu trang">↑</button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=sync-notice-6"></script>
   </body>
 </html>

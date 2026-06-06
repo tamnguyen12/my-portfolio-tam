@@ -1,7 +1,24 @@
 const scrollProgress = document.querySelector("#scrollProgress");
 const backToTop = document.querySelector(".back-to-top");
+const syncNotice = document.querySelector(".sync-notice");
+const syncNoticeClose = document.querySelector(".sync-notice-close");
 
 document.documentElement.classList.add("js-enabled");
+
+const hideSyncNotice = () => {
+  syncNotice?.classList.add("is-hidden");
+  window.setTimeout(() => {
+    if (syncNotice?.classList.contains("is-hidden")) {
+      syncNotice.style.display = "none";
+    }
+  }, 180);
+};
+
+syncNoticeClose?.addEventListener("click", hideSyncNotice);
+
+if (syncNotice) {
+  window.setTimeout(hideSyncNotice, 3000);
+}
 
 document.querySelectorAll("[data-letter-reveal]").forEach((target) => {
   const text = target.textContent.trim();

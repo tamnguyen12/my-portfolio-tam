@@ -63,6 +63,90 @@ input {
   transition: width 120ms linear;
 }
 
+.sync-notice {
+  position: fixed;
+  top: 88px;
+  right: clamp(14px, 3vw, 34px);
+  z-index: 45;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  gap: 12px;
+  align-items: start;
+  width: min(420px, calc(100vw - 28px));
+  padding: 14px;
+  color: #10223f;
+  background: rgba(255, 250, 240, 0.96);
+  border: 1px solid rgba(22, 87, 169, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(8, 24, 56, 0.22);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  animation: noticeIn 420ms ease both;
+}
+
+.sync-notice::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--cyan), var(--blue));
+  transform-origin: bottom;
+  animation: noticeCountdown 3000ms linear forwards;
+}
+
+.sync-notice.is-hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.sync-notice[hidden] {
+  display: none;
+}
+
+.sync-notice-icon,
+.sync-notice-close {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.sync-notice-icon {
+  color: white;
+  font-weight: 900;
+  background: var(--blue);
+}
+
+.sync-notice p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.sync-notice-close {
+  color: var(--deep-blue);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  background: rgba(22, 87, 169, 0.08);
+  border: 0;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.sync-notice-close:hover,
+.sync-notice-close:focus-visible {
+  background: rgba(199, 53, 69, 0.14);
+  outline: 0;
+  transform: translateY(-1px);
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1255,6 +1339,26 @@ input {
   }
 }
 
+@keyframes noticeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes noticeCountdown {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
 @media (max-width: 980px) {
   .site-header {
     position: sticky;
@@ -1294,6 +1398,23 @@ input {
     justify-content: space-between;
     gap: 8px;
     font-size: 0.85rem;
+  }
+
+  .sync-notice {
+    top: 128px;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .sync-notice-icon,
+  .sync-notice-close {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sync-notice p {
+    font-size: 0.88rem;
   }
 
   .hero {
