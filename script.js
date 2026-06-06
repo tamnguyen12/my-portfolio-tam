@@ -17,7 +17,7 @@ const hideSyncNotice = () => {
 syncNoticeClose?.addEventListener("click", hideSyncNotice);
 
 if (syncNotice) {
-  window.setTimeout(hideSyncNotice, 3000);
+  window.setTimeout(hideSyncNotice, 8000);
 }
 
 document.querySelectorAll("[data-letter-reveal]").forEach((target) => {

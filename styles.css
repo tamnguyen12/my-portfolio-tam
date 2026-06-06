@@ -93,7 +93,7 @@ input {
   height: 100%;
   background: linear-gradient(180deg, var(--cyan), var(--blue));
   transform-origin: bottom;
-  animation: noticeCountdown 3000ms linear forwards;
+  animation: noticeCountdown 8000ms linear forwards;
 }
 
 .sync-notice.is-hidden {
